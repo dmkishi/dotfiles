@@ -16,9 +16,10 @@ SSHSHORTCUT=
 
 
 # INIT -------------------------------------------------------------------------
+USERNAME='\u'
+
 # \w  Current working directory, with $HOME abbreviated with a tilde
 # \W  Current working directory name, with $HOME abbreviated with a tilde
-USERNAME='\u'
 DIRECTORYNAME='\w/'
 
 IS_TMUX=false
@@ -132,7 +133,7 @@ alias ll='ls -lh'
 alias la='ls -Alh'
 alias ..='cd ..'
 alias h='history'
-alias less='less -R'
+alias less='less -R'  # Always show ANSI-escaped colors
 
 # Git
 alias g='git status'
