@@ -32,17 +32,15 @@ if $IS_REMOTE_SSH && [ ! -z "$SSHSHORTCUT" ]; then
   HOSTINFO="${HOSTICON}[${SSHSHORTCUT}]"
 fi
 
-TITLEBAR="${HOSTINFO} ${DIRECTORYNAME}"
-if $IS_TMUX; then
-  # Additional information appended via `~/.tmux.conf`
-  TITLEBAR=$HOSTINFO
 IS_TMUX=false
 if [[ $TERM != *"xterm"* ]]; then
   IS_TMUX=true
 fi
 
+# In tmux, the title bar is set by tmux itself, via `.tmux.conf`
+if [[ ! $IS_TMUX ]]; then
+  TITLEBAR="\[\033]0;${HOSTINFO} ${DIRECTORYNAME}\007\]"
 fi
-TITLEBAR="\[\033]0;${TITLEBAR}\007\]"
 
 # tput Color Legend:
 #   - 0  Black     - 4  Blue
