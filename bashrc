@@ -49,8 +49,8 @@ TITLEBAR="\[\033]0;${TITLEBAR}\007\]"
 #   - 1  Red       - 5  Magenta
 #   - 2  Green     - 6  Cyan
 #   - 3  Yellow    - 7  White
-white_on_magenta="\[$(tput setab 5)\]\[$(tput setaf 7)\]"
-white_on_blue="\[$(tput setab 4)\]\[$(tput setaf 7)\]"
+white_on_magenta="\[$(tput setab 5)$(tput setaf 7)\]"
+white_on_blue="\[$(tput setab 4)$(tput setaf 7)\]"
 green="\[$(tput setaf 2)\]"
 
 DIRECTORYCOLOR=$white_on_magenta
