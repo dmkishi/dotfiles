@@ -22,11 +22,6 @@ USERNAME='\u'
 # \W  Current working directory name, with $HOME abbreviated with a tilde
 DIRECTORYNAME='\w/'
 
-IS_TMUX=false
-if [[ $TERM != *"xterm"* ]]; then
-  IS_TMUX=true
-fi
-
 IS_REMOTE_SSH=false
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   IS_REMOTE_SSH=true
@@ -41,6 +36,11 @@ TITLEBAR="${HOSTINFO} ${DIRECTORYNAME}"
 if $IS_TMUX; then
   # Additional information appended via `~/.tmux.conf`
   TITLEBAR=$HOSTINFO
+IS_TMUX=false
+if [[ $TERM != *"xterm"* ]]; then
+  IS_TMUX=true
+fi
+
 fi
 TITLEBAR="\[\033]0;${TITLEBAR}\007\]"
 
