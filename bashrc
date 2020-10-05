@@ -5,12 +5,15 @@ case $- in
 esac
 
 
+
+
 ################################################################################
 # Custom Prompt                                                                #
 ################################################################################
 # USER/HOST CONFIG -------------------------------------------------------------
 HOSTICON=👻
 SSHSHORTCUT=
+
 
 # INIT -------------------------------------------------------------------------
 # \w  Current working directory, with $HOME abbreviated with a tilde
@@ -57,6 +60,7 @@ GITBRANCHCOLOR=$white_on_blue
 if $IS_REMOTE_SSH; then
   GITBRANCHCOLOR=$white_on_magenta
 fi
+
 COMMANDCOLOR=$green
 RESETCOLOR="\[$(tput sgr0)\]"
 
@@ -66,6 +70,7 @@ git_branch_name() {
   # git branch 2>/dev/null | grep '^*' | rmcol 1 2
   git branch 2>/dev/null | grep '^*' | awk '{print " "$2" "}'
 }
+
 
 # START ------------------------------------------------------------------------
 # The title bar is declared with the prompt but does not appear with it.
@@ -78,6 +83,8 @@ PS2=">  ${COMMANDCOLOR}"
 # Traps with DEBUG are executed after every command. This resets the command
 # color.
 trap 'printf "\e[0m" "$_"' DEBUG
+
+
 
 
 ################################################################################
@@ -114,6 +121,8 @@ shopt -s histappend
 # PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
+
+
 ################################################################################
 # Aliases                                                                      #
 ################################################################################
@@ -139,6 +148,8 @@ alias tower='gittower'
 alias ag='ag --color-path=31'
 
 
+
+
 ################################################################################
 # Path                                                                         #
 ################################################################################
@@ -150,6 +161,8 @@ export PATH="/usr/local/sbin:$PATH"
 
 # For Go
 # export PATH=$PATH:$(go env GOPATH)/bin
+
+
 
 
 ################################################################################
