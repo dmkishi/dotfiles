@@ -77,8 +77,7 @@ git_branch_name() {
 # The title bar is declared with the prompt but does not appear with it.
 # NOTE: The title bar variable fucks up when I scroll through history with the
 #       arrow key....
-# NOTE: Unsure why but the `$` for `git_branch_name` has to be backslashed....
-PS1="${TITLEBAR}${HOSTICON}  ${DIRECTORYCOLOR}${DIRECTORYNAME}${GITBRANCHCOLOR}\$(git_branch_name)${RESETCOLOR}${COMMANDCOLOR}$ "
+PS1="${TITLEBAR}${HOSTICON}  ${DIRECTORYCOLOR}${DIRECTORYNAME}${GITBRANCHCOLOR}$(git_branch_name)${RESETCOLOR}${COMMANDCOLOR}$ "
 PS2=">  ${COMMANDCOLOR}"
 
 # Traps with DEBUG are executed after every command. This resets the command
