@@ -1,7 +1,7 @@
-# Don't do anything if not running interactively.
+# Exit if not running interactively.
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+    *) return;;
 esac
 
 
@@ -40,24 +40,39 @@ if $IS_TMUX; then
 fi
 TITLEBAR="\[\033]0;${TITLEBAR}\007\]"
 
-# Setup prompt with colors
-#   Color Legend:
-#     - 0  Black     - 4  Blue
-#     - 1  Red       - 5  Magenta
-#     - 2  Green     - 6  Cyan
-#     - 3  Yellow    - 7  White
-DIRECTORYCOLOR="\[$(tput setab 5)\]\[$(tput setaf 7)\]"    # White on magenta
+# tput Color Legend:
+#   - 0  Black     - 4  Blue
+#   - 1  Red       - 5  Magenta
+#   - 2  Green     - 6  Cyan
+#   - 3  Yellow    - 7  White
+white_on_magenta="\[$(tput setab 5)\]\[$(tput setaf 7)\]"
+white_on_blue="\[$(tput setab 4)\]\[$(tput setaf 7)\]"
+green="\[$(tput setaf 2)\]"
+
+DIRECTORYCOLOR=$white_on_magenta
 if $IS_REMOTE_SSH; then
-  DIRECTORYCOLOR="\[$(tput setab 4)\]\[$(tput setaf 7)\]"  # White on blue
+  DIRECTORYCOLOR=$white_on_blue
 fi
-COMMANDCOLOR="\[$(tput setaf 2)\]"                         # Green
+GITBRANCHCOLOR=$white_on_blue
+if $IS_REMOTE_SSH; then
+  GITBRANCHCOLOR=$white_on_magenta
+fi
+COMMANDCOLOR=$green
 RESETCOLOR="\[$(tput sgr0)\]"
+
+# Return Git branch name (if there's a Git repo) padded with whitespace, e.g.
+# " master ".
+git_branch_name() {
+  # git branch 2>/dev/null | grep '^*' | rmcol 1 2
+  git branch 2>/dev/null | grep '^*' | awk '{print " "$2" "}'
+}
 
 # START ------------------------------------------------------------------------
 # The title bar is declared with the prompt but does not appear with it.
 # NOTE: The title bar variable fucks up when I scroll through history with the
 #       arrow key....
-PS1="${TITLEBAR}${HOSTICON}  ${DIRECTORYCOLOR}${DIRECTORYNAME}${RESETCOLOR} ${COMMANDCOLOR}"
+# NOTE: Unsure why but the `$` for `git_branch_name` has to be backslashed....
+PS1="${TITLEBAR}${HOSTICON}  ${DIRECTORYCOLOR}${DIRECTORYNAME}${GITBRANCHCOLOR}\$(git_branch_name)${RESETCOLOR}${COMMANDCOLOR}$ "
 PS2=">  ${COMMANDCOLOR}"
 
 # Traps with DEBUG are executed after every command. This resets the command
@@ -108,6 +123,7 @@ alias ll='ls -lh'
 alias la='ls -Alh'
 alias ..='cd ..'
 alias h='history'
+alias less='less -R'
 
 # Git
 alias g='git status'
@@ -119,15 +135,33 @@ alias gl='git log'
 alias glh='git log | head'
 alias tower='gittower'
 
+# Colorize filepath for ag, AKA Silver Searcher
+alias ag='ag --color-path=31'
+
+
+################################################################################
+# Path                                                                         #
+################################################################################
+# Add ~/bin
+PATH=$PATH:$HOME/bin
+
+# For Brew (in particular for `arping`)
+export PATH="/usr/local/sbin:$PATH"
+
+# For Go
+# export PATH=$PATH:$(go env GOPATH)/bin
+
 
 ################################################################################
 # Other                                                                        #
 ################################################################################
-# Add ~/bin as part of path
-PATH=$PATH:$HOME/bin
-
 # Make grep color-coded
 export GREP_OPTIONS='--color=auto'
 
 # Launch rbenv
 eval "$(rbenv init -)"
+
+# Launch pyenv
+# NOTE: I think this is slowing down BASH initialization considerabbly. Disabling
+#       it for now as I never use Python anyways.
+#eval "$(pyenv init -)"
