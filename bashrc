@@ -160,8 +160,3 @@ export GREP_OPTIONS='--color=auto'
 
 # Launch rbenv
 eval "$(rbenv init -)"
-
-# Launch pyenv
-# NOTE: I think this is slowing down BASH initialization considerabbly. Disabling
-#       it for now as I never use Python anyways.
-#eval "$(pyenv init -)"
