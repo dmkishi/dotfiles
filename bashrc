@@ -28,17 +28,17 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 fi
 
 HOSTINFO=$HOSTICON
-if $IS_REMOTE_SSH && [ ! -z "$SSHSHORTCUT" ]; then
+if [ "$IS_REMOTE_SSH" = true ] && [ -n "$SSHSHORTCUT" ]; then
   HOSTINFO="${HOSTICON}[${SSHSHORTCUT}]"
 fi
 
 IS_TMUX=false
-if [[ $TERM != *"xterm"* ]]; then
+if [[ "$TERM" != *"xterm"* ]]; then
   IS_TMUX=true
 fi
 
 # In tmux, the title bar is set by tmux itself, via `.tmux.conf`
-if [[ ! $IS_TMUX ]]; then
+if [ "$IS_TMUX" = false ]; then
   TITLEBAR="\[\033]0;${HOSTINFO} ${DIRECTORYNAME}\007\]"
 fi
 
@@ -52,11 +52,9 @@ white_on_blue="\[$(tput setab 4)$(tput setaf 7)\]"
 green="\[$(tput setaf 2)\]"
 
 DIRECTORYCOLOR=$white_on_magenta
-if $IS_REMOTE_SSH; then
-  DIRECTORYCOLOR=$white_on_blue
-fi
 GITBRANCHCOLOR=$white_on_blue
-if $IS_REMOTE_SSH; then
+if [ "$IS_REMOTE_SSH" = true ]; then
+  DIRECTORYCOLOR=$white_on_blue
   GITBRANCHCOLOR=$white_on_magenta
 fi
 
