@@ -64,20 +64,16 @@ RESETCOLOR="\[$(tput sgr0)\]"
 # Return Git branch name (if there's a Git repo) padded with whitespace, e.g.
 # " master ".
 git_branch_name() {
-  # git branch 2>/dev/null | grep '^*' | rmcol 1 2
   git branch 2>/dev/null | grep '^*' | awk '{print " "$2" "}'
 }
 
 
 # START ------------------------------------------------------------------------
-# The title bar is declared with the prompt but does not appear with it.
-# NOTE: The title bar variable fucks up when I scroll through history with the
-#       arrow key....
 PS1="${TITLEBAR}${HOSTICON}  ${DIRECTORYCOLOR}${DIRECTORYNAME}${GITBRANCHCOLOR}$(git_branch_name)${RESETCOLOR}${COMMANDCOLOR}$ "
 PS2=">  ${COMMANDCOLOR}"
 
-# Traps with DEBUG are executed after every command. This resets the command
-# color.
+# Reset the command response color. Traps with "DEBUG" are executed after every
+# command.
 trap 'printf "\e[0m" "$_"' DEBUG
 
 # Cleanup
