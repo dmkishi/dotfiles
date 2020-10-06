@@ -17,9 +17,6 @@ SSHSHORTCUT=
 
 # INIT -------------------------------------------------------------------------
 USERNAME='\u'
-
-# \w  Current working directory, with $HOME abbreviated with a tilde
-# \W  Current working directory name, with $HOME abbreviated with a tilde
 WORKING_DIR='\w/'
 
 IS_REMOTE_SSH=false
