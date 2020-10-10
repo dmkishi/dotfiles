@@ -1,3 +1,5 @@
+set nomodeline
+
 set encoding=utf-8
 syntax enable
 set background=dark
