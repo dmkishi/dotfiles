@@ -149,7 +149,7 @@ alias ag='ag --color-path=31'
 PATH=$PATH:$HOME/bin
 
 # For Brew (in particular for `arping`)
-export PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/sbin:$PATH"
 
 # For Go
 # export PATH=$PATH:$(go env GOPATH)/bin
