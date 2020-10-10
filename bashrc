@@ -118,26 +118,9 @@ shopt -s histappend
 ################################################################################
 # Aliases                                                                      #
 ################################################################################
-# General
-alias ls='ls -FG'
-alias ll='ls -lh'
-alias la='ls -Alh'
-alias ..='cd ..'
-alias h='history'
-alias less='less -R'  # Always show ANSI-escaped colors
-
-# Git
-alias g='git status'
-alias gd='git diff'
-alias ga='git add'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gl='git log'
-alias glh='git log | head'
-alias tower='gittower'
-
-# Colorize filepath for ag, AKA Silver Searcher
-alias ag='ag --color-path=31'
+if [ -f ~/.shell_aliases ]; then
+  source ~/.shell_aliases
+fi
 
 
 
