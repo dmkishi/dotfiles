@@ -1,0 +1,91 @@
+# - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
+# - [How to Configure zsh](https://zserge.com/posts/terminal/)
+# - [Luke Smith's zshrc](https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52)
+
+
+
+autoload -U compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _correct _approximate 
+compinit
+
+# autoload -U colors vcs_info
+
+
+
+################################################################################
+# History
+################################################################################
+HISTFILE=~/.zsh/history
+HISTSIZE=5000
+SAVEHIST=5000
+
+# Add commands to history as they are entered, don't wait for shell to exit
+setopt INC_APPEND_HISTORY
+
+# Also remember command start time and duration
+setopt EXTENDED_HISTORY
+
+# Do not keep duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS
+
+# Do not remember commands that start with a whitespace
+setopt HIST_IGNORE_SPACE
+
+# Correct spelling of all arguments in the command line
+setopt CORRECT_ALL
+
+
+
+
+################################################################################
+# Aliases                                                                      #
+################################################################################
+if [ -f ~/.shell_aliases ]; then
+  source ~/.shell_aliases
+fi
+
+
+
+
+################################################################################
+# Prompt
+################################################################################
+#https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
+#http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+# Colors: https://jonasjacek.github.io/colors/
+precmd () {
+  local DIRS="$(dirs)"
+  
+  #http://zsh.sourceforge.net/Guide/zshguide05.html#l121
+  local LEADING_PATH="${DIRS%/*}"
+  local WORKING_DIR="${DIRS##*/}"
+
+#TODO: Now that removed the leading "/", we can simplify this
+  if [ "$LEADING_PATH" = "$WORKING_DIR" ]; then
+    psvar[1]=''
+    if [ "$WORKING_DIR" = '~' ]; then
+      psvar[2]='~'
+    elif [ "$WORKING_DIR" = '' ]; then
+      psvar[2]='/'
+    else
+      # This shouldn't happen?
+      psvar[2]="$WORKING_DIR/"
+    fi
+  else
+    psvar[1]="$LEADING_PATH/"
+    psvar[2]="$WORKING_DIR"
+  fi  
+}
+
+# `%#` shows either `%` or `#` depending on if it's running with superuser
+# privileges.
+PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
+
+
+#git branch on right prompt. show * if "dirty"
+#show return code
+
+
+# Load zsh-syntax-highlighting; must be last.
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
