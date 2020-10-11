@@ -1,9 +1,11 @@
-# Dedicated config file for shell aliases enable DRY alias configurations for
-# both bash and zsh. Must be referenced by both .bashrc and .zshrc:
+# Dedicated config file for shell aliases, which allows DRY alias configs for
+# both Bash and Zsh. This file must be referenced by both .bashrc and .zshrc:
 #
 #   if [ -f ~/.shell_aliases ]; then
 #     source ~/.shell_aliases
 #   fi
+
+
 
 
 # General

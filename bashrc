@@ -16,7 +16,7 @@ esac
 
 
 ################################################################################
-# Custom Prompt                                                                #
+# Prompt
 ################################################################################
 # USER/HOST CONFIG -------------------------------------------------------------
 HOST_ICON=👻
@@ -88,8 +88,8 @@ unset HOST_ICON SSHSHORTCUT USERNAME WORKING_DIR IS_REMOTE_SSH HOSTINFO IS_TMUX 
 
 
 ################################################################################
-# Better History                                                               #
-# Much taken from: <https://sanctum.geek.nz/arabesque/better-bash-history/>    #
+# History
+# Much taken from: <https://sanctum.geek.nz/arabesque/better-bash-history/> 
 ################################################################################
 # Default max is 500, let's embiggen.
 HISTSIZE=999
@@ -124,18 +124,13 @@ shopt -s histappend
 
 
 ################################################################################
-# Aliases                                                                      #
+# Other
 ################################################################################
+# Aliases
 if [ -f ~/.shell_aliases ]; then
   source ~/.shell_aliases
 fi
 
-
-
-
-################################################################################
-# Other                                                                        #
-################################################################################
 # Make grep color-coded
 export GREP_OPTIONS='--color=auto'
 
