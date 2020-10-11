@@ -1,3 +1,11 @@
+################################################################################
+# Non-Interactive Only
+################################################################################
+# Paths
+if [ -f ~/.shell_paths ]; then
+  source ~/.shell_paths
+fi
+
 # Exit if not running interactively.
 case $- in
   *i*) ;;
@@ -121,21 +129,6 @@ shopt -s histappend
 if [ -f ~/.shell_aliases ]; then
   source ~/.shell_aliases
 fi
-
-
-
-
-################################################################################
-# Path                                                                         #
-################################################################################
-# Add ~/bin
-PATH=$PATH:$HOME/bin
-
-# For Brew (in particular for `arping`)
-PATH="/usr/local/sbin:$PATH"
-
-# For Go
-# export PATH=$PATH:$(go env GOPATH)/bin
 
 
 

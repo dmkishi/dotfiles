@@ -1,0 +1,20 @@
+# Dedicated config file for shell paths, which allows DRY alias configs for both
+# Bash and Zsh. This file must be referenced by both .bashrc and .zshenv:
+#
+#   if [ -f ~/.shell_paths ]; then
+#     source ~/.shell_paths
+#   fi
+#
+# NOTE: Don't use `export`. See <https://unix.stackexchange.com/a/26059>.
+
+
+
+
+# Add ~/bin (append)
+PATH=$PATH:$HOME/bin
+
+# For Brew (prepend)
+PATH="/usr/local/sbin:$PATH"
+
+# For Go (append)
+# PATH=$PATH:$(go env GOPATH)/bin
