@@ -1,0 +1,5 @@
+# https://www.topbug.net/blog/2017/07/31/inputrc-for-humans/
+# https://gist.github.com/gregorynicholas/1812027
+
+# Principally applicable to Bash
+set completion-ignore-case On
