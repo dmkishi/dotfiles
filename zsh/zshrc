@@ -70,8 +70,8 @@ fi
 ################################################################################
 # Prompt
 ################################################################################
-#https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
-#http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+# https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 # Colors: https://jonasjacek.github.io/colors/
 precmd () {
   local DIRS="$(dirs)"
