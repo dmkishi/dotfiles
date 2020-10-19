@@ -1,7 +1,9 @@
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 # - [How to Configure zsh](https://zserge.com/posts/terminal/)
 # - [Luke Smith's zshrc](https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52)
-
+#TODO: set window title
+#TODO: git branch on right prompt. show * if "dirty"
+#TODO: show return code
 
 
 autoload -U compinit
@@ -23,13 +25,13 @@ SAVEHIST=5000
 # Add commands to history as they are entered, don't wait for shell to exit
 setopt INC_APPEND_HISTORY
 
-# Also remember command start time and duration
+# Add timestamp and duration of command to history
 setopt EXTENDED_HISTORY
 
-# Do not keep duplicate commands in history
+# Ignore duplicate commands in history
 setopt HIST_IGNORE_ALL_DUPS
 
-# Do not remember commands that start with a whitespace
+# Ignore commands that start with a whitespace
 setopt HIST_IGNORE_SPACE
 
 # Correct spelling of all arguments in the command line
@@ -83,8 +85,6 @@ precmd () {
 PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 
 
-#git branch on right prompt. show * if "dirty"
-#show return code
 
 
 # Load zsh-syntax-highlighting; must be last.
