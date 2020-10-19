@@ -34,8 +34,25 @@ setopt HIST_IGNORE_ALL_DUPS
 # Ignore commands that start with a whitespace
 setopt HIST_IGNORE_SPACE
 
+HISTORY_IGNORE='(ls|la|cd|pwd|exit)'
+
 # Correct spelling of all arguments in the command line
 setopt CORRECT_ALL
+
+# Re-allow `fwd-i-search` via ctrl-s
+#
+# Typically in shell environments, ctrl-s is reserved for XON/XOFF flow control,
+# an antiquated TTY-era signal/command. Disabling this should not pose a problem
+# but, to be as safe as possible, it is disabled only within interactive shells.
+#
+#   - `[[ $- == *i* ]]` checks if interactive
+#   - `stty -ixon` disables ctrl-s
+#
+# - https://unix.stackexchange.com/questions/73498/how-to-cycle-through-reverse-i-search-in-bash#73499
+# - https://stackoverflow.com/questions/791765/unable-to-forward-search-bash-history-similarly-as-with-ctrl-r#791800
+# - https://stackoverflow.com/questions/24623021/getting-stty-standard-input-inappropriate-ioctl-for-device-when-using-scp-thro#25391867
+# - https://unix.stackexchange.com/questions/137842/what-is-the-point-of-ctrl-s
+[[ $- == *i* ]] && stty -ixon
 
 
 
