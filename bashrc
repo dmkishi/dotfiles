@@ -69,12 +69,12 @@ RESET_COLOR="\[$(tput sgr0)\]"
 # Return Git branch name (if there's a Git repo) padded with whitespace, e.g.
 # " master ".
 git_branch_name() {
-  git branch 2> /dev/null | grep '^*' | awk '{print $2}'
+  git branch 2> /dev/null | grep '^*' | awk '{print " "$2" "}'
 }
 
 
 # START ------------------------------------------------------------------------
-PS1="${TITLE_BAR}${HOST_ICON}  ${DIR_COLOR}${WORKING_DIR}${GIT_COLOR} $(git_branch_name) ${RESET_COLOR}${COMMAND_COLOR}$ "
+PS1="${TITLE_BAR}${HOST_ICON}  ${DIR_COLOR}${WORKING_DIR}${GIT_COLOR}$(git_branch_name)${RESET_COLOR}${COMMAND_COLOR}$ "
 PS2=">  ${COMMAND_COLOR}"
 
 # Reset the command response color. Traps with "DEBUG" are executed after every
