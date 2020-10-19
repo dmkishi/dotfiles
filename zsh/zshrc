@@ -80,20 +80,14 @@ precmd () {
   local LEADING_PATH="${DIRS%/*}"
   local WORKING_DIR="${DIRS##*/}"
 
-#TODO: Now that removed the leading "/", we can simplify this
+  psvar[1]="$LEADING_PATH/"
+  psvar[2]="$WORKING_DIR"
+  
   if [ "$LEADING_PATH" = "$WORKING_DIR" ]; then
     psvar[1]=''
-    if [ "$WORKING_DIR" = '~' ]; then
-      psvar[2]='~'
-    elif [ "$WORKING_DIR" = '' ]; then
+    if [ "$WORKING_DIR" = '' ]; then
       psvar[2]='/'
-    else
-      # This shouldn't happen?
-      psvar[2]="$WORKING_DIR/"
     fi
-  else
-    psvar[1]="$LEADING_PATH/"
-    psvar[2]="$WORKING_DIR"
   fi  
 }
 
