@@ -13,8 +13,11 @@
 # Add ~/bin (append)
 PATH=$PATH:$HOME/bin
 
-# For Brew (prepend)
-PATH="/usr/local/sbin:$PATH"
+# For Homebrew (prepend)
+#
+# A few, select packages require superuser privileges, such as `arping`. They
+# are installed here.
+PATH=/usr/local/sbin:$PATH
 
 # For Go (append)
 # PATH=$PATH:$(go env GOPATH)/bin

@@ -1,3 +1,6 @@
+# Executed always: interactive logins, interactive non-logins, or scripts.
+
+
 ZDOTDIR=~/.zsh/
 
 
