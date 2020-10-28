@@ -9,9 +9,9 @@
 
 
 # General
-alias ls='ls -FG'
-alias ll='ls -lh'
-alias la='ls -Alh'
+alias l='ls -FG'
+alias ll='ls -alhF'
+alias la='ls -A'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias h='history'
