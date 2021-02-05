@@ -8,7 +8,7 @@
 
 autoload -U compinit
 zstyle ':completion:*' menu select
-zstyle ':completion:*' completer _complete _correct _approximate 
+zstyle ':completion:*' completer _complete _correct _approximate
 compinit
 
 # autoload -U colors vcs_info
@@ -18,7 +18,7 @@ compinit
 ################################################################################
 # History
 ################################################################################
-HISTFILE=~/.zsh/history
+HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 
@@ -75,20 +75,20 @@ fi
 # Colors: https://jonasjacek.github.io/colors/
 precmd () {
   local DIRS="$(dirs)"
-  
+
   #http://zsh.sourceforge.net/Guide/zshguide05.html#l121
   local LEADING_PATH="${DIRS%/*}"
   local WORKING_DIR="${DIRS##*/}"
 
   psvar[1]="$LEADING_PATH/"
   psvar[2]="$WORKING_DIR"
-  
+
   if [ "$LEADING_PATH" = "$WORKING_DIR" ]; then
     psvar[1]=''
     if [ "$WORKING_DIR" = '' ]; then
       psvar[2]='/'
     fi
-  fi  
+  fi
 }
 
 # `%#` shows either `%` or `#` depending on if it's running with superuser
@@ -96,6 +96,7 @@ precmd () {
 PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 
 
+eval "$(rbenv init -)"
 
 
 # Load zsh-syntax-highlighting; must be last.
