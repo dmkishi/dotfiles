@@ -131,8 +131,9 @@ if [ -f ~/.shell_aliases ]; then
   source ~/.shell_aliases
 fi
 
+if [ -f ~/.shell_startup ]; then
+  source ~/.shell_startup
+fi
+
 # Make grep color-coded
 export GREP_OPTIONS='--color=auto'
-
-# Launch rbenv
-eval "$(rbenv init -)"

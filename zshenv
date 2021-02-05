@@ -4,3 +4,8 @@
 if [ -f ~/.shell_paths ]; then
   source ~/.shell_paths
 fi
+
+
+# if [ -f ~/.shell_startup ]; then
+#   source ~/.shell_startup
+# fi
