@@ -1,4 +1,4 @@
-# Executed always: interactive logins, interactive non-logins, or scripts.
+# Executed always: interactive logins, interactive non-logins, and scripts.
 
 
 if [ -f ~/.shell_paths ]; then

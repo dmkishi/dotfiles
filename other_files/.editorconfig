@@ -1,4 +1,5 @@
-# http://editorconfig.org/
+# This is the root or top-most EditorConfig file. Place this (or a symbolic link
+# to this) in your home directory.
 root = true
 
 [*]
