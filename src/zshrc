@@ -6,12 +6,42 @@
 #TODO: show return code
 
 
-autoload -U compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' completer _complete _correct _approximate
-compinit
+# autoload -U compinit
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' completer _complete _correct _approximate
+# compinit
 
 # autoload -U colors vcs_info
+
+
+
+
+################################################################################
+# Aliases                                                                      #
+################################################################################
+# General
+alias l='ls -FG'
+alias ll='l -lh'
+alias la='ll -A'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias h='history'
+alias less='less -R'  # Always show ANSI-escaped colors
+
+# Git
+alias g='git status'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gd='git diff'
+alias gl='git log'
+alias glh='git log | head'
+alias tower='gittower'
+
+# Colorize filepath for ag, AKA Silver Searcher
+alias ag='ag --color-path=31'
+
 
 
 
@@ -58,16 +88,6 @@ setopt CORRECT_ALL
 
 
 ################################################################################
-# Aliases                                                                      #
-################################################################################
-if [ -f ~/.shell_aliases ]; then
-  source ~/.shell_aliases
-fi
-
-
-
-
-################################################################################
 # Prompt
 ################################################################################
 # https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
@@ -96,8 +116,22 @@ precmd () {
 PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 
 
-eval "$(rbenv init -)"
 
 
+################################################################################
+# Path
+################################################################################
+# Add ~/bin (append)
+PATH=$PATH:$HOME/bin
+
+# Launch rbenv
+# eval $(/opt/homebrew/bin/brew shellenv)
+
+
+
+
+################################################################################
+# Last
+################################################################################
 # Load zsh-syntax-highlighting; must be last.
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -1,9 +1,28 @@
 # Kishi's Dotfiles
 
-## Shell startup files loading order
+Simultaneous Zsh-Bash support has been discontinued in favor of a Zsh-only
+configuration. This vastly simplifies maintenance especially as there is no
+reason to continue support for Bash on macOS. Bash support on Debian-based
+Raspberry Pi and Ubuntu environments will be maintained separately.
+
+Do we need to detect and bifurcate the shell search PATH for Rosetta 2, e.g.
+Shopify Themekit?
+
+
+## Install
+Symlink from here to the home directory. The `ls` command cannot overwrite files
+and will error-out in case any files pre-exist on the home directory.
+```sh
+ln -s ~/dotfiles/src/zshrc ~/.zshrc
+```
+
+
+
+
+## Shell Startup Files Loading Order
 https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
 
-### Zsh
+**Zsh**
 |                     | Interactive Login  | Interactive non-login  | Script  |
 |---------------------|:------------------:|:----------------------:|:-------:|
 | `/etc/zshenv`       | A                  | A                      | A       |
@@ -17,7 +36,7 @@ https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-
 | `~/.zlogout`        | I                  |                        |         |
 | `/etc/zlogout`      | J                  |                        |         |
 
-### Bash
+**Bash**
 |                     | Interactive Login  | Interactive non-login  | Script  |
 |---------------------|:------------------:|:----------------------:|:-------:|
 | `/etc/profile`      | A                  |                        |         |
