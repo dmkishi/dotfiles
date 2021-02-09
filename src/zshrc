@@ -117,4 +117,4 @@ PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 PATH=$PATH:$HOME/bin
 
 # Launch rbenv
-# eval $(/opt/homebrew/bin/brew shellenv)
+eval $(/opt/homebrew/bin/brew shellenv)
