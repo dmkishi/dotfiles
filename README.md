@@ -5,13 +5,13 @@ configuration. This vastly simplifies maintenance especially as there is no
 reason to continue support for Bash on macOS. Bash support on Debian-based
 Raspberry Pi and Ubuntu environments will be maintained separately.
 
-Do we need to detect and bifurcate the shell search PATH for Rosetta 2, e.g.
-Shopify Themekit?
+
 
 
 ## Install
 Symlink from here to the home directory. The `ls` command cannot overwrite files
 and will error-out in case any files pre-exist on the home directory.
+
 ```sh
 ln -s ~/dotfiles/src/zshrc ~/.zshrc
 ```
