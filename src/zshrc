@@ -26,7 +26,7 @@ alias la='ll -A'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias h='history'
-alias less='less -R'  # Always show ANSI-escaped colors
+alias less='less -R' # Always show ANSI-escaped colors
 
 # Git
 alias g='git status'
