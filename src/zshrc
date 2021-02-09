@@ -6,14 +6,6 @@
 #TODO: show return code
 
 
-# autoload -U compinit
-# zstyle ':completion:*' menu select
-# zstyle ':completion:*' completer _complete _correct _approximate
-# compinit
-
-# autoload -U colors vcs_info
-
-
 
 
 ################################################################################
@@ -126,12 +118,3 @@ PATH=$PATH:$HOME/bin
 
 # Launch rbenv
 # eval $(/opt/homebrew/bin/brew shellenv)
-
-
-
-
-################################################################################
-# Last
-################################################################################
-# Load zsh-syntax-highlighting; must be last.
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
