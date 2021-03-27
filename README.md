@@ -9,11 +9,12 @@ Raspberry Pi and Ubuntu environments will be maintained separately.
 
 
 ## Install
-Symlink from here to the home directory. The `ls` command cannot overwrite files
-and will error-out in case any files pre-exist on the home directory.
+Filenames in `src/` has dot-prefixes replaced with underscores. This allows (a)
+the files to be conventionally visible and (b) explicitly documents the missing
+dot-prefix (there may be configuration files without dot-prefixes.)
 
 ```sh
-ln -s ~/dotfiles/src/zshrc ~/.zshrc
+ln -s ~/dotfiles/src/zshrc ~/_zshrc
 ```
 
 
