@@ -1,10 +1,138 @@
-set nomodeline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+"
+" A better vim plugin manager than Pathogen or Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto-install vim-plug (this may increase launch-time)
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set encoding=utf-8
-syntax enable
+" Run PlugInstall if there are missing plugins (this may increase launch-time)
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" Start vim-plug
+"
+" Specify a directory for plugins:
+" - Avoid using standard Vim directory names like 'plugin'
+" - For Neovim: stdpath('data') . '/plugged'
+call plug#begin('~/.vim/plugged')
+  " General
+  Plug $HOMEBREW_PREFIX . '/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'preservim/nerdtree'
+  Plug 'lifepillar/vim-solarized8'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat' " Extend repeating with the . command
+  Plug 'tpope/vim-unimpaired'
+  Plug 'lornix/vim-scrollbar'
+
+  " JS
+  Plug 'othree/yajs.vim', { 'for': [ 'javascript', 'javascript.jsx', 'html' ] }
+  "Plug 'sheerun/vim-polyglot'
+call plug#end()
+
+" fzf -------------------------------------------------------------------------
+
+" vim-solarized8 ---------------------------------------------------------------
+autocmd vimenter * ++nested colorscheme solarized8
+
+" lightline --------------------------------------------------------------------
+let g:lightline = { 'colorscheme': 'Tomorrow' }
+
+" vim-scrollbar ----------------------------------------------------------------
+autocmd ColorScheme *
+  \ highlight Scrollbar_Thumb ctermfg=240 ctermbg=240 |
+  \ highlight Scrollbar_Clear ctermfg=black
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible               " Forget vi compatibility
+set encoding=utf-8             " Encode with Unicode
+set nomodeline                 " Disable modelines, which are file-specific vim settings
+set ttyfast                    " Improve redraw performance
+set autoread                   " Detect changes to file outside vim and update
+set hidden                     " Allow hidden buffers, e.g. unsaved buffers
+set history=1000               " Change history to 1000
+set backspace=indent,eol,start " Make backspace behave in a sane manner
+set clipboard=unnamed          " Yank also to system clipboard
+let mapleader = ","            " Map leader to comma
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File Explorer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Netrw ------------------------------------------------------------------------
+let g:netrw_liststyle = 3 " Default listing view to "tree"
+let g:netrw_winsize = 25 " Open explorer at 25% width
+
+" NERDTree ---------------------------------------------------------------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" FZF --------------------------------------------------------------------------
+nmap <silent> <leader>t :FZF<cr>
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" User Interaction
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap jj <Esc> " Escape with "jj"
+set wildmenu " Show all matches on tab-complete (vs cycling through matches)
+noremap <space> :set hlsearch! hlsearch?<cr> " Clear search hilight w/ space-key
+
+" Enable mouse support: (i) enter visual mode on select, (ii) place cursor on
+" click, and (iii) scroll with mouse wheel (or trackpad.)
+if has('mouse')
+  set mouse=a
+endif
+
+" Scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+set so=7 " Show 7 lines around cursor while scrolling
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Shortcut for current working directory (see Practical Vim, "Easy Expansion of
+" the Active File Directory"
+cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Appearance
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme solarized-patched
-"colorscheme base16-default
+set laststatus=2 " Always show status line
+set showcmd " Show commands while being entered on the status line
+set cursorline
+set showmatch " Show matching brackets
+set colorcolumn=80
+syntax enable
+
+" Show invisibles
+set list listchars=tab:→\ ,nbsp:·,trail:·,extends:❯,precedes:❮
+
 " Italicize comments and HTML attributes
 " NOTE: The terminfo database must be updated to enable terminal applications
 "       recognize and render italics. See README.
@@ -14,53 +142,51 @@ highlight xmlAttrib cterm=italic term=italic gui=italic
 " highlight Type cterm=italic term=italic gui=italic
 highlight Normal ctermbg=none
 
+" Disable auto-commenting for all file-types
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+filetype on " Enable file-type detection
+filetype plugin on " Enable loading plugin files for specific file-types
+filetype indent on " Enable loading indent file for specific file-types
+
+" Enable spellcheck and underline errors
 set spell spelllang=en_us
+highlight clear SpellBad
+autocmd ColorScheme * highlight SpellBad cterm=underline ctermfg=NONE
+set nospell
 
-set mouse=a
+" Enable "Hybrid" line numbers: show relative line numbers except on the current
+" line where the absolute number is displayed. Also auto-toggle between
+" relative and absolute line numbers depending on mode.
+" <https://jeffkreeftmeijer.com/vim-number/>
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+set numberwidth=7
 
-"Enable filetype detection, etc.
-filetype on
-filetype plugin on
-filetype indent on
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indention
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
-"Disable auto-commenting for all filetypes
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-"Allow backspacing over autoindent, line breaks, and start of insert
-set backspace=indent,eol,start
 
-set number    "Show line numbers in gutter
-set showcmd
-set cursorline
-set showmatch "Show matching brackets
-set ruler     "Show cursor position in status bar 
-set colorcolumn=80
 
-set incsearch  "Do interactive searching
-set hlsearch   "Highlight search results
-set ignorecase "Ignore case for search (use "\C" anywhere in search pattern to
-               "override, e.g. "/Example\C"
-"set smartcase "For now, rather be intentional
-
-"Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-"Always open explorer mode in tree-view
-let g:netrw_liststyle=3
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUG-INS
+" Search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect()
-
-" indentLines
-let g:indentLine_enabled = 1
-"let g:indentLine_color_term = 0   "For base16-default
-let g:indentLine_color_term  = 235 "For solarized-patched
+set incsearch  " Interactive search
+set hlsearch   " Highlight search results
+set ignorecase " Ignore case (use "\C" anywhere in search pattern to override,
+               "   e.g. "/Example\C"
