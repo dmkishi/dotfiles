@@ -5,6 +5,15 @@ syntax enable
 set background=dark
 colorscheme solarized-patched
 "colorscheme base16-default
+" Italicize comments and HTML attributes
+" NOTE: The terminfo database must be updated to enable terminal applications
+"       recognize and render italics. See README.
+highlight Comment cterm=italic term=italic gui=italic
+highlight htmlArg cterm=italic term=italic gui=italic
+highlight xmlAttrib cterm=italic term=italic gui=italic
+" highlight Type cterm=italic term=italic gui=italic
+highlight Normal ctermbg=none
+
 set spell spelllang=en_us
 
 set mouse=a

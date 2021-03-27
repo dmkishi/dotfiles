@@ -51,3 +51,20 @@ https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-
 | `~/.bash_logout`    | C                  |                        |         |
 
 *As soon as one is found, it skips to "C"
+
+
+
+
+## Italics in Vim and tmux
+https://sookocheff.com/post/vim/italics
+https://rsapkf.xyz/blog/enabling-italics-vim-tmux
+
+Unfortunately this is a compound effort involving multiple configuration files:
+
+- Terminfo: Italics are enabled by updating the terminfo database, which allows
+  terminal emulators to recognize escape codes for italics. Terminfo files must
+  be created for tmux, tmux w/ 256 color support, and xterm with 256 color support,
+  which must be compiled with the `tic` command. The compiled files are written
+  to `~/.terminfo`.
+- `.tmux.conf`: Direct tmux to use the new Terminfo.
+- `.vimrc`: Italicize comments.
