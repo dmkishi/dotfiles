@@ -15,6 +15,7 @@ dot-prefix (there may be configuration files without dot-prefixes.)
 
 ```sh
 ln -s ~/dotfiles/src/zshrc ~/_zshrc
+ln -sf ~/dotfiles/src/zshrc ~/_zshrc  # Overwrite pre-existing symlink file
 ```
 
 
