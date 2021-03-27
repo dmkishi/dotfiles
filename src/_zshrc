@@ -1,15 +1,28 @@
+################################################################################
+# Table of Contents
+#
+# *Notes
+# *Aliases
+# *History
+# *Other
+# *Prompt
+# *Path
+################################################################################
+################################################################################
+# *Notes
+################################################################################
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 # - [How to Configure zsh](https://zserge.com/posts/terminal/)
 # - [Luke Smith's zshrc](https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52)
-#TODO: set window title
-#TODO: git branch on right prompt. show * if "dirty"
-#TODO: show return code
+# TODO: set window title
+# TODO: git branch on right prompt. show * if "dirty"
+# TODO: show return code
 
 
 
 
 ################################################################################
-# Aliases                                                                      #
+# *Aliases
 ################################################################################
 # General
 alias l='ls -FG'
@@ -38,7 +51,7 @@ alias ag='ag --color-path=31'
 
 
 ################################################################################
-# History
+# *History
 ################################################################################
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -80,7 +93,10 @@ setopt CORRECT_ALL
 
 
 ################################################################################
-# Prompt
+# *Other
+################################################################################
+################################################################################
+# *Prompt
 ################################################################################
 # https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
@@ -114,7 +130,7 @@ PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
 
 
 ################################################################################
-# Path
+# *Path
 ################################################################################
 # Add ~/bin (append)
 PATH=$PATH:$HOME/bin
