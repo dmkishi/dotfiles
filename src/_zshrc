@@ -19,8 +19,6 @@
 # TODO: show return code
 
 
-
-
 ################################################################################
 # *Aliases
 ################################################################################
@@ -47,8 +45,6 @@ alias tower='gittower'
 
 # Colorize filepath for ag, AKA Silver Searcher
 alias ag='ag --color-path=31'
-
-
 
 
 ################################################################################
@@ -91,8 +87,6 @@ setopt CORRECT_ALL
 [[ $- == *i* ]] && stty -ixon
 
 
-
-
 ################################################################################
 # *Other
 ################################################################################
@@ -101,8 +95,6 @@ sh "$HOME/.vim/plugged/vim-solarized8/scripts/solarized8.sh"
 
 # Disable automatic `brew cleanup`
 export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-
 
 
 ################################################################################
@@ -135,8 +127,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 #   privileges.
 # PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
-
-
 
 
 ################################################################################
