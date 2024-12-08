@@ -32,6 +32,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias h='history'
 alias less='less -R' # Always show ANSI-escaped colors
+alias cpc="fc -ln -1 | pbcopy" # Copy Previous Command
 
 # Git
 alias g='git status'
