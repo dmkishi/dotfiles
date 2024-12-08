@@ -96,6 +96,9 @@ sh "$HOME/.vim/plugged/vim-solarized8/scripts/solarized8.sh"
 # Disable automatic `brew cleanup`
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
+# Load nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 
 ################################################################################
 # *Prompt
