@@ -1,15 +1,28 @@
+# `.zshrc`
+#
+# PURPOSE: Used for configuring the shell's behavior in INTERACTIVE SESSIONS,
+# such as when you open a terminal.
+#
+# LOADED WHEN:
+# - Only for interactive shells, e.g., when you're typing commands directly.
+# - Not loaded by non-interactive shells or scripts.
+#
+# COMMON USE:
+# - Defining aliases, shell options, prompt customization, and interactive
+#   features.
+# - Loading plugins or tools like oh-my-zsh, zsh-autosuggestions, etc.
+#
+# BEST PRACTICE: Put interactive-only configurations here.
+
+
 ################################################################################
 # Table of Contents
 #
-# *Notes
 # *Aliases
 # *History
 # *Other
 # *Prompt
 # *Path
-################################################################################
-################################################################################
-# *Notes
 ################################################################################
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 # - [How to Configure zsh](https://zserge.com/posts/terminal/)
