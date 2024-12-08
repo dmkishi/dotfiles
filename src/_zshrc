@@ -132,8 +132,4 @@ PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
 ################################################################################
 # *Path
 ################################################################################
-# Add ~/bin (append)
-PATH=$PATH:$HOME/bin
-
-# Add Homebrew to PATH
-eval $(/opt/homebrew/bin/brew shellenv)
+# Set only in `.zshenv`.

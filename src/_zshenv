@@ -1,0 +1,44 @@
+# `.zshenv`
+#
+# PURPOSE: Used for setting *environment* variables that should be available in
+# all instances of the shell, including scripts and non-interactive sessions.
+#
+# LOADING:
+# - Always loaded first.
+# - Always loaded by all instance of zsh, even non-interactive ones like scripts.
+#
+# COMMON USE:
+# - Defining universal environment variables (`PATH`, `EDITOR`, etc.)
+# - Minimal setup, as it affects all zsh processes.
+#
+# BEST PRACTICE: Keep it lightweight to avoid issues in non-interactive scripts.
+
+
+################################################################################
+# *Path
+################################################################################
+# Add ~/bin (append)
+PATH=$PATH:$HOME/bin
+
+# Add Homebrew to PATH
+eval $(/opt/homebrew/bin/brew shellenv)
+
+# ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and
+# these are never upgraded.
+#
+# To link Rubies to Homebrew's OpenSSL 1.1 (which is upgraded) add the following
+# to your ~/.zshrc:
+#
+# Note: this may interfere with building old versions of Ruby (e.g <2.4) that use
+# OpenSSL <1.1.
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+
+# For Python Poetry
+PATH=~/.local/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
