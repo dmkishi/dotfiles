@@ -99,6 +99,9 @@ setopt CORRECT_ALL
 # Enable vim colorscheme "Solarized8" to work
 sh "$HOME/.vim/plugged/vim-solarized8/scripts/solarized8.sh"
 
+# Disable automatic `brew cleanup`
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
 
 
 
