@@ -142,7 +142,9 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 # - `%#` shows either `%` or `#` depending on if it's running with superuser
 #   privileges.
 # PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
-PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+if [ $IS_MAC_OS ]; then
+  PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+fi
 
 
 ################################################################################

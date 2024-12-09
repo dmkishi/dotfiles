@@ -13,15 +13,25 @@
 #
 # BEST PRACTICE: Keep it lightweight to avoid issues in non-interactive scripts.
 
+################################################################################
+# *Feature Detection
+################################################################################
+# Detect macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  IS_MAC_OS=true
+fi
+
 
 ################################################################################
 # *Path
 ################################################################################
-# Add ~/bin (append)
-PATH=$PATH:$HOME/bin
+if [ $IS_MAC_OS ]; then
+  # Add ~/bin (append)
+  PATH=$PATH:$HOME/bin
 
-# Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
+  # Homebrew
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
