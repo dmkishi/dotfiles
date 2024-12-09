@@ -20,12 +20,12 @@
 # Add ~/bin (append)
 PATH=$PATH:$HOME/bin
 
-# Add Homebrew to PATH
+# Homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
 
-# Node nvm
+# nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Ruby
 # ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and
