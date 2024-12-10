@@ -3,11 +3,10 @@ Kishi's Dotfiles
 
 Install
 --------------------------------------------------------------------------------
-Filenames in `src/` has dot-prefixes replaced with underscores. This allows (a) the files to be conventionally visible and (b) explicitly documents the missing dot-prefix (there may be configuration files without dot-prefixes.)
-
 ```sh
-ln -s ~/dotfiles/src/zshrc ~/_zshrc
-ln -sf ~/dotfiles/src/zshrc ~/_zshrc  # Overwrite pre-existing symlink file
+cd ~
+git clone https://github.com/dmkishi/dotfiles.git
+./install.sh
 ```
 
 
