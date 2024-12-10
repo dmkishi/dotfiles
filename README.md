@@ -11,30 +11,30 @@ ln -sf ~/dotfiles/src/zshrc ~/_zshrc  # Overwrite pre-existing symlink file
 ```
 
 
-Shell Startup Files Loading Order
+Startup Files and Loading Order[^1]
 --------------------------------------------------------------------------------
-https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
+Only `.zshenv` and `.zshrc` are used. See respective files for notes and descriptions.
 
-**Zsh**
-|                     | Interactive Login  | Interactive non-login  | Script  |
-|---------------------|:------------------:|:----------------------:|:-------:|
-| `/etc/zshenv`       | A                  | A                      | A       |
-| `~/.zshenv`         | B                  | B                      | B       |
-| `/etc/zprofile`     | C                  |                        |         |
-| `~/.zprofile`       | D                  |                        |         |
-| `/etc/zshrc`        | E                  | C                      |         |
-| `~/.zshrc`          | F                  | D                      |         |
-| `/etc/zlogin`       | G                  |                        |         |
-| `~/.zlogin`         | H                  |                        |         |
-| `~/.zlogout`        | I                  |                        |         |
-| `/etc/zlogout`      | J                  |                        |         |
+|                  | Interactive Login  | Interactive non-login  | Script  |
+|------------------|:------------------:|:----------------------:|:-------:|
+| `/etc/zshenv`    | A                  | A                      | A       |
+| `~/.zshenv`      | B                  | B                      | B       |
+| `/etc/zprofile`  | C                  |                        |         |
+| `~/.zprofile`    | D                  |                        |         |
+| `/etc/zshrc`     | E                  | C                      |         |
+| `~/.zshrc`       | F                  | D                      |         |
+| `/etc/zlogin`    | G                  |                        |         |
+| `~/.zlogin`      | H                  |                        |         |
+| `~/.zlogout`     | I                  |                        |         |
+| `/etc/zlogout`   | J                  |                        |         |
 
+[^1]: https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
 
 
 Italics in Vim and tmux
 --------------------------------------------------------------------------------
-https://sookocheff.com/post/vim/italics
-https://rsapkf.xyz/blog/enabling-italics-vim-tmux
+- https://sookocheff.com/post/vim/italics
+- https://rsapkf.xyz/blog/enabling-italics-vim-tmux
 
 Unfortunately, this is a compound effort involving multiple configuration files:
 
