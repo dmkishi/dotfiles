@@ -1,7 +1,5 @@
 Kishi's Dotfiles
 ================================================================================
-Simultaneous Zsh–Bash support has been discontinued in favor of a Zsh-only configuration. This vastly reduces maintenance especially as there is no reason to continue support for Bash on macOS. Bash support on Debian-based Raspberry Pi and Ubuntu environments will be maintained separately.
-
 
 Install
 --------------------------------------------------------------------------------
@@ -31,19 +29,6 @@ https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-
 | `~/.zlogout`        | I                  |                        |         |
 | `/etc/zlogout`      | J                  |                        |         |
 
-**Bash**
-|                     | Interactive Login  | Interactive non-login  | Script  |
-|---------------------|:------------------:|:----------------------:|:-------:|
-| `/etc/profile`      | A                  |                        |         |
-| `/etc/bash.bashrc`  |                    | A                      |         |
-| `~/.bashrc`         |                    | B                      |         |
-| `~/.bash_profile`   | B1*                |                        |         |
-| `~/.bash_login`     | B2*                |                        |         |
-| `~/.profile`        | B3*                |                        |         |
-| `BASH_ENV`          |                    |                        | A       |
-| `~/.bash_logout`    | C                  |                        |         |
-
-*As soon as one is found, it skips to "C"
 
 
 Italics in Vim and tmux
@@ -56,3 +41,8 @@ Unfortunately, this is a compound effort involving multiple configuration files:
 - Terminfo: Italics are enabled by updating the terminfo database, which allows terminal emulators to recognize escape codes for italics. Terminfo files must be created for tmux, tmux w/ 256 color support, and xterm with 256 color support, which must be compiled with the `tic` command. The compiled files are written to `~/.terminfo`.
 - `.tmux.conf`: Direct tmux to use the new Terminfo.
 - `.vimrc`: Italicize comments.
+
+
+On Bash Files
+--------------------------------------------------------------------------------
+Simultaneous Zsh–Bash support has been discontinued in favor of a Zsh-only configuration. This vastly reduces maintenance especially as there is no reason to continue support for Bash on macOS (or elsewhere as Zsh can be installed instead.)
