@@ -20,8 +20,8 @@
 #
 # *Aliases
 # *History
-# *Other
 # *Prompt and Window Title
+# *Other
 # *Path
 ################################################################################
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
@@ -100,19 +100,6 @@ setopt CORRECT_ALL
 
 
 ################################################################################
-# *Other
-################################################################################
-# Enable vim colorscheme "Solarized8" to work
-sh "$HOME/.vim/plugged/vim-solarized8/scripts/solarized8.sh"
-
-# Disable automatic `brew cleanup`
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-# Load nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-
-################################################################################
 # *Prompt and Window Title
 ################################################################################
 if [ $IS_MAC_OS ]; then
@@ -152,6 +139,19 @@ else
   # 12.  ah    Dataless file                  Black       Light gray  ??=30;47
   export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 fi
+
+
+################################################################################
+# *Other
+################################################################################
+# Enable vim colorscheme "Solarized8" to work
+sh "$HOME/.vim/plugged/vim-solarized8/scripts/solarized8.sh"
+
+# Disable automatic `brew cleanup`
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+# Load nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 
 ################################################################################
