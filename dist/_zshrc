@@ -78,7 +78,7 @@ setopt HIST_IGNORE_ALL_DUPS
 # Ignore commands that start with a whitespace
 setopt HIST_IGNORE_SPACE
 
-HISTORY_IGNORE='(ls|la|cd|pwd|exit)'
+HISTORY_IGNORE='(ls|l|ll|la|cd|pwd|exit)'
 
 # Correct spelling of all arguments in the command line
 setopt CORRECT_ALL
