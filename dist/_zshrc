@@ -21,13 +21,12 @@
 # *Aliases
 # *History
 # *Other
-# *Prompt
+# *Prompt and Window Title
 # *Path
 ################################################################################
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 # - [How to Configure zsh](https://zserge.com/posts/terminal/)
 # - [Luke Smith's zshrc](https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52)
-# TODO: set window title
 # TODO: git branch on right prompt. show * if "dirty"
 # TODO: show return code
 
@@ -114,36 +113,44 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 
 ################################################################################
-# *Prompt
+# *Prompt and Window Title
 ################################################################################
-# https://stackoverflow.com/questions/55055662/zsh-theme-not-updating-from-function
-# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-# Colors: https://jonasjacek.github.io/colors/
-# precmd () {
-#   local DIRS="$(dirs)"
-
-#   #http://zsh.sourceforge.net/Guide/zshguide05.html#l121
-#   local LEADING_PATH="${DIRS%/*}"
-#   local WORKING_DIR="${DIRS##*/}"
-
-#   psvar[1]="$LEADING_PATH/"
-#   psvar[2]="$WORKING_DIR"
-
-#   if [ "$LEADING_PATH" = "$WORKING_DIR" ]; then
-#     psvar[1]=''
-#     if [ "$WORKING_DIR" = '' ]; then
-#       psvar[2]='/'
-#     fi
-#   fi
-# }
-
-# - `%1~` shows the top or last component of the current working directory with
-#   $HOME substituted with the shortcut `~`.
-# - `%#` shows either `%` or `#` depending on if it's running with superuser
-#   privileges.
-# PROMPT='👻 %K{magenta}%F{205}%1v%F{white}%2v%k%F{magenta}%#%f '
 if [ $IS_MAC_OS ]; then
   PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+
+  # Set window title
+  precmd () {
+    print -Pn "\e]0;👻  %1~\a"
+  }
+else
+  # Set prompt
+  PROMPT='%m: %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+
+  # Set window title
+  precmd() {
+    print -Pn "\e]0;%m: %1~\a"
+  }
+
+  alias l='ls --color -p'
+
+  # Approximate port of the macOS default `LSCOLORS` of `exfxcxdxbxegedabagacadah`
+  # to the Linux-GNU `LS_COLORS` environment variable.
+  #
+  # NUM  PAIR  FILE TYPE                      FG COLOR    BG COLOR    LINUX
+  # ---  ----  -----------------------------  ----------  ----------  --------
+  #  1.  ex    Directory                      Blue        Default     di=34
+  #  2.  fx    Symbolic link                  Magenta     Default     ln=35
+  #  3.  cx    Socket                         Green       Default     so=32
+  #  4.  dx    Pipe	                          Brown       Default     pi=33
+  #  5.  bx    Executable	                    Red         Default     ex=31
+  #  6.  eg    Block device                   Blue        Cyan        bd=34;46
+  #  7.  ed    Character device               Blue        Brown       cd=34;43
+  #  8.  ab    Executable w/ setuid           Black       Red         su=30;41
+  #  9.  ag    Executable w/ setgid           Black       Cyan        sg=30;46
+  # 10.  ac    Other-writable dir w/ sticky   Black       Green       tw=30;42
+  # 11.  ad    Other-writable dir wo/ sticky  Black       Brown       ow=30;43
+  # 12.  ah    Dataless file                  Black       Light gray  ??=30;47
+  export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 fi
 
 
