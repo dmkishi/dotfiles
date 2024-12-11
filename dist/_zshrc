@@ -110,8 +110,8 @@ if [ $IS_MAC_OS ]; then
     print -Pn "\e]0;👻  %1~\a"
   }
 else
-  # Set prompt
-  PROMPT='%m: %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+  # Set prompt (show hostname and use distinct coloration from macOS.)
+  PROMPT='%m:%K{blue}%F{white}%1~%k%F{blue}%#%f '
 
   # Set window title
   precmd() {
