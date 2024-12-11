@@ -20,9 +20,9 @@
 #
 # *Aliases
 # *History
-# *Prompt and Window Title
+# *Prompts and Window Titles
 # *Other
-# *Path
+# *Paths
 ################################################################################
 # - [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 # - [How to Configure zsh](https://zserge.com/posts/terminal/)
@@ -100,7 +100,7 @@ setopt CORRECT_ALL
 
 
 ################################################################################
-# *Prompt and Window Title
+# *Prompts and Window Titles
 ################################################################################
 if [ $IS_MAC_OS ]; then
   PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
@@ -155,6 +155,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 
 ################################################################################
-# *Path
+# *Paths
 ################################################################################
 # Set only in `.zshenv`.
