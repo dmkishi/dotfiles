@@ -1,6 +1,6 @@
 Kishi's Dotfiles
 ================================================================================
-This is Zsh-only (at least regarding the shell.) Bash support has been discontinued after macOS 10.15 in 2019 switched its default shell to Zsh from Bash. On Unix-like devices, install Zsh and change it to the default shell.
+This is Zsh-only with regard to shell configs. Bash support has been discontinued after macOS v10.15 in 2019 had its default shell switched to Zsh from Bash. On Unix-like devices, install Zsh and change it to the default shell.
 
 
 Install
