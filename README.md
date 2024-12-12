@@ -1,6 +1,8 @@
 Kishi's Dotfiles
 ================================================================================
-This is Zsh-only with regard to shell configs. Bash support has been discontinued after macOS v10.15 in 2019 had its default shell switched to Zsh from Bash. On Unix-like devices, install Zsh and change it to the default shell.
+Config files for Zsh, tmux, and Vim.
+
+Bash support has been discontinued after macOS switched its default shell to Zsh. On Unix-like devices, install Zsh and make it the default shell.
 
 
 Install
