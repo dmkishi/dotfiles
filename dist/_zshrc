@@ -103,15 +103,23 @@ setopt CORRECT_ALL
 # *Prompts and Window Titles
 ################################################################################
 if [ $IS_MAC_OS ]; then
-  PROMPT='👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
+  #  %(?.OK.NO)  Conditionally print if exit code is 0 or not.
+  #  %?          Exit code of previous command.
+  #  %1~         Current working directory name (show only last 1 element.)
+  #  %#          Print # w/ root privileges, otherwise %.
+  #  %K{...}     Background color.
+  #  %F{...}     Foreground color.
+  #  %B %b       Start/stop bold text.
+  #  %f          Reset to default text color.
+  PROMPT='%(?..%F{red}[%BExit: %?%b]%f )👻 %K{magenta}%F{white}%1~%k%F{magenta}%#%f '
 
   # Set window title
   precmd () {
     print -Pn "\e]0;👻  %1~\a"
   }
 else
-  # Set prompt (show hostname and use distinct coloration from macOS.)
-  PROMPT='%m:%K{blue}%F{white}%1~%k%F{blue}%#%f '
+  # Set prompt: show hostname and use distinct coloration from macOS.
+  PROMPT='%(?..%F{red}[%BExit: %?%b]%f )%m:%K{blue}%F{white}%1~%k%F{blue}%#%f '
 
   # Set window title
   precmd() {
