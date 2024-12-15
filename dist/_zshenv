@@ -28,7 +28,7 @@ fi
 ################################################################################
 if [ $IS_MAC_OS ]; then
   # Add ~/bin (append)
-  PATH=$PATH:$HOME/bin
+  export PATH=$PATH:$HOME/bin
 
   # Homebrew
   eval $(/opt/homebrew/bin/brew shellenv)
