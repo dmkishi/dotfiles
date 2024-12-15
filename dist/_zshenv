@@ -29,6 +29,8 @@ fi
 if [ $IS_MAC_OS ]; then
   export PATH=$PATH:$HOME/bin  # Append `~/bin`
   eval $(/opt/homebrew/bin/brew shellenv)  # Add Homebrew
+else
+  export PATH=/usr/sbin:$PATH  # Append `/usr/sbin` (for nginx)
 fi
 
 # nvm
