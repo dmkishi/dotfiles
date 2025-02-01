@@ -1,7 +1,7 @@
 # `.zshenv`
 #
-# PURPOSE: Used for setting ENVIRONMENT variables that should be available in
-# all instances of the shell, including scripts and non-interactive sessions.
+# Set ENVIRONMENT variables that should be available in ALL instances of the
+# shell, including scripts and non-interactive sessions
 #
 # LOADED WHEN:
 # - Always loaded first.

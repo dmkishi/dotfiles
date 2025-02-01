@@ -1,7 +1,6 @@
 # `.zshrc`
 #
-# PURPOSE: Used for configuring the shell's behavior in INTERACTIVE SESSIONS,
-# such as when you open a terminal.
+# Configures INTERACTIVE SESSIONS only, such as when you open a terminal.
 #
 # LOADED WHEN:
 # - Only for interactive shells, e.g., when you're typing commands directly.
