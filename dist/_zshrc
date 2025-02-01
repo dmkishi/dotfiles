@@ -88,9 +88,6 @@ setopt HIST_IGNORE_SPACE
 
 HISTORY_IGNORE='(ls|l|ll|la|cd|pwd|exit)'
 
-# Correct spelling of all arguments in the command line
-setopt CORRECT_ALL
-
 # Re-allow `fwd-i-search` via ctrl-s
 #
 # Typically in shell environments, ctrl-s is reserved for XON/XOFF flow control,
