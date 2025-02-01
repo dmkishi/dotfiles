@@ -18,6 +18,7 @@
 # Table of Contents
 #
 # *Aliases
+# *Auto-correction
 # *History
 # *Prompts and Window Titles
 # *Other
@@ -56,6 +57,14 @@ alias tower='gittower'
 
 # Colorize filepath for ag, AKA Silver Searcher
 alias ag='ag --color-path=31'
+
+
+################################################################################
+# *Auto-correction
+################################################################################
+# From <https://superuser.com/a/610025>.
+unsetopt correct_all # Disable correction of commands and arguments.
+setopt correct # Enable correction of commands only.
 
 
 ################################################################################
