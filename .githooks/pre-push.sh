@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
-# Install: ln -sf pre-push.sh ../.git/hooks/pre-push
+# Install:
+# 1. `cd` to `.githooks`.
+# 2. ln -sf ../../.githooks/pre-push.sh ../.git/hooks/pre-push
 
 set -e
 
