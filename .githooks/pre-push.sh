@@ -8,6 +8,6 @@ set -e
 
 GIT_TAG=$(git describe --tags --exact-match 2>/dev/null || echo '')
 if [[ -z "$GIT_TAG" ]]; then
-  echo "Git Tag must be set."
+  echo "ERROR: Git Tag must be set." >&2
   exit 1
 fi
