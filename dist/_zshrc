@@ -171,3 +171,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 # *Paths
 ################################################################################
 # Set only in `.zshenv`.
+
+# Created by `pipx` on 2025-05-08 18:16:45
+export PATH="$PATH:/Users/kishi/.local/bin"
