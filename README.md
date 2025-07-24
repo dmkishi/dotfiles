@@ -4,7 +4,6 @@ Config files for Zsh, tmux, and Vim.
 
 Bash support has been discontinued after macOS switched its default shell to Zsh. On Unix-like devices, install Zsh and make it the default shell.
 
-
 Install
 --------------------------------------------------------------------------------
 ```sh
@@ -12,7 +11,6 @@ cd ~  # Or wherever
 git clone https://github.com/dmkishi/dotfiles.git
 ./dotfiles/install.sh
 ```
-
 
 Technical Notes
 --------------------------------------------------------------------------------
@@ -33,7 +31,6 @@ Only `.zshenv` and `.zshrc` are used. See respective files for notes and descrip
 | `/etc/zlogout`   | J                  |                        |         |
 
 [^1]: https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
-
 
 ### Enabling Italics in Vim and tmux
 - https://sookocheff.com/post/vim/italics
