@@ -30,11 +30,11 @@ Only `.zshenv` and `.zshrc` are used. See respective files for notes and descrip
 | `~/.zlogout`     | I                  |                        |         |
 | `/etc/zlogout`   | J                  |                        |         |
 
-[^1]: https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
+[^1]: <https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/>
 
 ### Enabling Italics in Vim and tmux
-- https://sookocheff.com/post/vim/italics
-- https://rsapkf.xyz/blog/enabling-italics-vim-tmux
+- <https://sookocheff.com/post/vim/italics>
+- <https://rsapkf.xyz/blog/enabling-italics-vim-tmux>
 
 Unfortunately, this is a compound effort involving multiple configuration files:
 
