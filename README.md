@@ -1,6 +1,6 @@
 Kishi's Dotfiles
 ================================================================================
-Config files for Zsh, tmux, and Vim.
+Config files for Zsh, tmux, Vim, etc.
 
 Bash support has been discontinued after macOS switched its default shell to Zsh. On Unix-like devices, install Zsh and make it the default shell.
 
