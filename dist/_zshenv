@@ -15,6 +15,14 @@
 
 
 ################################################################################
+# *Secrets
+################################################################################
+# Authentication tokens should never be on a version-controlled file. Instead,
+# record it on a separate local-only file.
+[ -f ~/.zshenv.local ] && source ~/.zshenv.local
+
+
+################################################################################
 # *Feature Detection
 ################################################################################
 # Detect macOS
