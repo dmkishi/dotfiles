@@ -173,6 +173,3 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 # Tools and installers often append to PATH here in `.zshrc`. Whenever possible,
 # move such PATH modifications to `.zshenv` to ensure they are available in all
 # zsh instances, including non-interactive ones.
-
-# Created by `pipx` on 2025-05-08 18:16:45
-export PATH="$PATH:/Users/kishi/.local/bin"

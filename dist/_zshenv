@@ -47,6 +47,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # **Python ---------------------------------------------------------------------
+# Created by `pipx` on 2025-05-08 18:16:45
+export PATH="$PATH:/Users/kishi/.local/bin"
+
 # Python pyenv
 #eval "$(pyenv init -)"
 
