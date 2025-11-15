@@ -32,7 +32,7 @@ fi
 
 
 ################################################################################
-# *Path
+# *Paths
 ################################################################################
 if [ $IS_MAC_OS ]; then
   export PATH=$PATH:$HOME/bin  # Append `~/bin`
@@ -41,11 +41,19 @@ else
   export PATH=/usr/sbin:$PATH  # Append `/usr/sbin` (for nginx)
 fi
 
-# Node.js nvm
+# **JavaScript -----------------------------------------------------------------
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Ruby
+# **Python ---------------------------------------------------------------------
+# Python pyenv
+#eval "$(pyenv init -)"
+
+# Python Poetry
+#PATH=~/.local/bin:$PATH
+
+# **Ruby -----------------------------------------------------------------------
 # ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and
 # these are never upgraded.
 #
@@ -58,9 +66,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Ruby rbenv
 #eval "$(rbenv init -)"
-
-# Python pyenv
-#eval "$(pyenv init -)"
-
-# Python Poetry
-#PATH=~/.local/bin:$PATH
