@@ -58,10 +58,10 @@ esac
 export PATH="$PATH:/Users/kishi/.local/bin"
 
 # Python pyenv
-#eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 
 # Python Poetry
-#PATH=~/.local/bin:$PATH
+PATH=~/.local/bin:$PATH
 
 # **Ruby -----------------------------------------------------------------------
 # ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and
