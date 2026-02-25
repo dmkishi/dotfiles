@@ -58,6 +58,9 @@ alias tower='gittower'
 # Colorize filepath for ag, AKA Silver Searcher
 alias ag='ag --color-path=31'
 
+# Other
+alias youtube-dl='yt-dlp'
+
 
 ################################################################################
 # *Auto-correction
