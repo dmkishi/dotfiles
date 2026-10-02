@@ -19,3 +19,17 @@
 if [ $IS_SSH_TAILSCALE ]; then
   print 'Connected via Tailscale'
 fi
+
+
+################################################################################
+# *Dotfile Drift
+################################################################################
+# Print `install.sh --check` problems, if any. The repo is found by resolving
+# the `~/.zshrc` symlink to `<repo>/dist/_zshrc`.
+() {
+  local repo=${${:-$HOME/.zshrc}:A:h:h} out
+  [[ -x $repo/install.sh ]] || return
+  out=$("$repo/install.sh" --check 2>&1) && return
+  print 'Dotfile drift:'
+  print -r -- "$out"
+}
