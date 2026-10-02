@@ -14,29 +14,37 @@ LINKS=(
   _zshrc:.zshrc
 )
 
-TIMESTAMP="$(date +%Y%m%d%H%M%S)"
-
 # Add symlinks, backing up anything already in the way.
-for pair in "${LINKS[@]}"; do
-  src="${DIR}/${pair%%:*}"
-  target="${HOME}/${pair#*:}"
+install_links() {
+  local timestamp pair src target backup
+  timestamp="$(date +%Y%m%d%H%M%S)"
 
-  # Skip if already the correct symlink.
-  if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
-    continue
-  fi
+  for pair in "${LINKS[@]}"; do
+    src="${DIR}/${pair%%:*}"
+    target="${HOME}/${pair#*:}"
 
-  # Backup if target is a regular file or wrong symlink.
-  if [ -e "$target" ] || [ -L "$target" ]; then
-    backup="${target}.bak.${TIMESTAMP}"
-    mv "$target" "$backup"
-    echo "Backed up ${target} to ${backup}"
-  fi
+    # Skip if already the correct symlink.
+    if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
+      continue
+    fi
 
-  ln -s "$src" "$target"
-  echo "Linked ${target}"
-done
+    # Backup if target is a regular file or wrong symlink.
+    if [ -e "$target" ] || [ -L "$target" ]; then
+      backup="${target}.bak.${timestamp}"
+      mv "$target" "$backup"
+      echo "Backed up ${target} to ${backup}"
+    fi
+
+    ln -s "$src" "$target"
+    echo "Linked ${target}"
+  done
+}
 
 # Enable italics in tmux and vim. See README.md.
-tic -x "${DIR}/terminfo/tmux.terminfo"
-tic -x "${DIR}/terminfo/xterm-256color.terminfo"
+run_tic() {
+  tic -x "${DIR}/terminfo/tmux.terminfo"
+  tic -x "${DIR}/terminfo/xterm-256color.terminfo"
+}
+
+install_links
+run_tic
