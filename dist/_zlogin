@@ -1,0 +1,21 @@
+# `.zlogin`
+#
+# Configures LOGIN SESSIONS only, such as when you SSH in or open a terminal.
+#
+# LOADED WHEN:
+# - Only for login shells, last, after `.zshrc`.
+# - Not loaded by non-interactive shells, e.g., `ssh host cmd`, `scp`, or
+#   `rsync`.
+#
+# COMMON USE:
+# - One-time setup per login, e.g., login messages.
+#
+# BEST PRACTICE: Put things here that should run once per login, not per shell.
+
+
+################################################################################
+# *Tailscale
+################################################################################
+if [ $IS_SSH_TAILSCALE ]; then
+  print 'Connected via Tailscale'
+fi

@@ -30,6 +30,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   IS_MAC_OS=true
 fi
 
+# Detect SSH from a Tailscale client, i.e., `100.64.0.0/10` or
+# `fd7a:115c:a1e0::/48`
+if [[ ${SSH_CONNECTION%% *} == (100.<64-127>.*|fd7a:115c:a1e0:*) ]]; then
+  IS_SSH_TAILSCALE=true
+fi
+
 
 ################################################################################
 # *Paths
