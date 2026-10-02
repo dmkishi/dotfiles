@@ -12,6 +12,21 @@ git clone https://github.com/dmkishi/dotfiles.git
 ./dotfiles/install.sh
 ```
 
+### Zsh on Debian/Ubuntu
+1. Install Zsh:  `sudo apt install zsh`
+1. Make it default: `chsh -s "$(command -v zsh)"`
+1. Log out and back in.
+1. Check that it worked: `echo $SHELL`
+
+Usage
+--------------------------------------------------------------------------------
+### Check for Drift
+```sh
+./dotfiles/install.sh --check
+```
+
+Prints nothing and exits 0 when clean; otherwise prints one line per problem and exits 1.
+
 Technical Notes
 --------------------------------------------------------------------------------
 ### Startup Files and Loading Order[^1]
