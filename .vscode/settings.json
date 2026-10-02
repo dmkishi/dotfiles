@@ -1,5 +1,8 @@
 {
   "cSpell.words": [
     "hushlogin"
-  ]
+  ],
+  "files.associations": {
+    "**/dist/_z*": "shellscript"
+  }
 }
