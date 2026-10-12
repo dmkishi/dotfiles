@@ -4,7 +4,8 @@
 #
 # Symlinks each file in `dist/` into `$HOME` and compiles the terminfo entries.
 # Anything else already at a target is backed up to `<target>.bak.<timestamp>`.
-# Safe to rerun from any directory. Stops at the first failed command, keeping
+# Safe to rerun from any directory. Exits 1 without changing anything if Zsh is
+# missing or isn't the login shell. Stops at the first failed command, keeping
 # any links already made.
 #
 #   --check  Report drift without changing anything. Prints nothing and exits 0
@@ -37,6 +38,17 @@ readonly DIST="${REPO}/dist"
 #===============================================================================
 # HELPER FUNCTIONS
 #===============================================================================
+#-------------------------------------------------------------------------------
+# Print an error message.
+# Arguments:
+#   Message words, joined with spaces.
+# Outputs:
+#   Writes the message to stderr.
+#-------------------------------------------------------------------------------
+err() {
+  echo "Error: $*" >&2
+}
+
 #-------------------------------------------------------------------------------
 # Check whether a path is a symlink to the given source.
 # Arguments:
@@ -168,6 +180,41 @@ check_repo() {
 }
 
 #-------------------------------------------------------------------------------
+# Check that Zsh is installed and is the login shell. See README.md.
+# Outputs:
+#   Writes an error to stderr, if any.
+# Returns:
+#   0 if Zsh is the login shell, 1 otherwise.
+#-------------------------------------------------------------------------------
+check_shell() {
+  local user login_shell
+  user="$(id -un)"
+
+  if ! command -v zsh >/dev/null; then
+    err "Zsh is not installed. See README.md."
+    return 1
+  fi
+
+  # Read from the user database, since `$SHELL` is stale until next login.
+  case "$(uname)" in
+    Darwin)
+      login_shell="$(dscl . -read "/Users/${user}" UserShell \
+        | awk '{print $2}')"
+      ;;
+    *) login_shell="$(getent passwd "$user" | cut -d: -f7)" ;;
+  esac
+
+  case "$login_shell" in
+    */zsh) ;;
+    *)
+      err "Login shell is ${login_shell:-unknown}, not Zsh." \
+        "Run: chsh -s \"\$(command -v zsh)\""
+      return 1
+      ;;
+  esac
+}
+
+#-------------------------------------------------------------------------------
 # Report files in `dist/` that aren't in `LINKS`.
 # Globals:
 #   DIST
@@ -249,6 +296,7 @@ main() {
       exit "$problems"
       ;;
     "")
+      check_shell || exit 1
       install_links
       install_terminfo
       ;;
