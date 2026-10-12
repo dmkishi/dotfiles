@@ -39,17 +39,6 @@ readonly DIST="${REPO}/dist"
 # HELPER FUNCTIONS
 #===============================================================================
 #-------------------------------------------------------------------------------
-# Print an error message.
-# Arguments:
-#   Message words, joined with spaces.
-# Outputs:
-#   Writes the message to stderr.
-#-------------------------------------------------------------------------------
-err() {
-  echo "Error: $*" >&2
-}
-
-#-------------------------------------------------------------------------------
 # Check whether a path is a symlink to the given source.
 # Arguments:
 #   Path to check.
@@ -108,11 +97,20 @@ link_target() {
 }
 
 #-------------------------------------------------------------------------------
-# Print usage.
+# Arguments:
+#   Message words, joined with spaces.
+# Outputs:
+#   Writes the message to stderr.
+#-------------------------------------------------------------------------------
+print_error() {
+  echo "Error: $*" >&2
+}
+
+#-------------------------------------------------------------------------------
 # Outputs:
 #   Writes usage to stderr.
 #-------------------------------------------------------------------------------
-usage() {
+print_usage() {
   echo "Usage: $0 [--check]" >&2
 }
 
@@ -191,7 +189,7 @@ check_shell() {
   user="$(id -un)"
 
   if ! command -v zsh >/dev/null; then
-    err "Zsh is not installed. See README.md."
+    print_error "Zsh is not installed. See README.md."
     return 1
   fi
 
@@ -207,7 +205,7 @@ check_shell() {
   case "$login_shell" in
     */zsh) ;;
     *)
-      err "Login shell is ${login_shell:-unknown}, not Zsh." \
+      print_error "Login shell is ${login_shell:-unknown}, not Zsh." \
         "Run: chsh -s \"\$(command -v zsh)\""
       return 1
       ;;
@@ -301,7 +299,7 @@ main() {
       install_terminfo
       ;;
     *)
-      usage
+      print_usage
       exit 2
       ;;
   esac
