@@ -76,3 +76,22 @@ Unfortunately, this is a compound effort involving multiple configuration files:
 Related Projects
 --------------------------------------------------------------------------------
 - [chezmoi](https://www.chezmoi.io) is an advanced and well maintained dotfile manager.
+
+Changelog
+--------------------------------------------------------------------------------
+### v0.8.0 (2026-10-12)
+- Features:
+  - Dotfiles:
+    - Add Tailscale SSH message.
+    - Add pnpm to `PATH`.
+    - Add alias `youtube-dl` → `yt-dlp`.
+    - Restore Python pyenv initializer.
+      - Guard initializer when not installed.
+    - Disable nvm bash completion.
+  - Install:
+    - Make safe to rerun from any directory, backing up files in the way.
+    - Add drift check. Run on login.
+    - Fail at first failed command.
+    - Fail if Zsh is missing or is not the login shell.
+- Chores:
+  - Improve README and add changelog.
