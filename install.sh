@@ -4,10 +4,13 @@
 #
 # Symlinks each file in `dist/` into `$HOME` and compiles the terminfo entries.
 # Anything else already at a target is backed up to `<target>.bak.<timestamp>`.
-# Safe to rerun from any directory.
+# Safe to rerun from any directory. Stops at the first failed command, keeping
+# any links already made.
 #
 #   --check  Report drift without changing anything. Prints nothing and exits 0
 #            when clean; otherwise prints one line per problem and exits 1.
+
+set -euo pipefail
 
 #===============================================================================
 # CONFIG
@@ -154,7 +157,8 @@ check_repo() {
   done < <(git -C "$REPO" status --porcelain -- dist)
 
   # Behind upstream, as of the last fetch.
-  behind="$(git -C "$REPO" rev-list --count 'HEAD..@{upstream}' 2>/dev/null)"
+  behind="$(git -C "$REPO" rev-list --count 'HEAD..@{upstream}' 2>/dev/null)" \
+    || behind=0
   if (( behind > 0 )); then
     echo "Behind upstream by ${behind} commit(s); run git pull in ${REPO}"
     problems=1
