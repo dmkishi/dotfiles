@@ -64,7 +64,9 @@ esac
 export PATH="$PATH:$HOME/.local/bin"
 
 # Python pyenv
-eval "$(pyenv init -)"
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init -)"
+fi
 
 # Python Poetry
 PATH="$HOME/.local/bin:$PATH"
