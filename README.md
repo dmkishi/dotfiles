@@ -79,6 +79,10 @@ Related Projects
 
 Changelog
 --------------------------------------------------------------------------------
+### v0.8.1 (2026-11-06)
+- Fixes:
+  - Dotfiles: switch to pnpm global bin directory (`$PNPM_HOME/bin`) in `PATH`.
+
 ### v0.8.0 (2026-10-12)
 - Features:
   - Dotfiles:
