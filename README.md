@@ -79,6 +79,10 @@ Related Projects
 
 Changelog
 --------------------------------------------------------------------------------
+### v0.9.0 (2026-11-20)
+- Features:
+  - Remove `.hushlogin`. It should be managed on a case-by-case basis.
+
 ### v0.8.1 (2026-11-06)
 - Fixes:
   - Dotfiles: switch to pnpm global bin directory (`$PNPM_HOME/bin`) in `PATH`.

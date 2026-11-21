@@ -19,7 +19,6 @@ set -euo pipefail
 # Files to link, as `source:target` pairs: sources are in `dist/`; targets are
 # in `$HOME`.
 readonly LINKS=(
-  _hushlogin:.hushlogin
   _tmux.conf:.tmux.conf
   _vimrc:.vimrc
   _zlogin:.zlogin
